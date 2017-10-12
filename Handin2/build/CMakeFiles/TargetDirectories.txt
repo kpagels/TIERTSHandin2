@@ -1,3 +1,0 @@
-C:/Users/live/Projects/TIERTS/TIERTSHandin2/Handin2/build/CMakeFiles/systemx.dir
-C:/Users/live/Projects/TIERTS/TIERTSHandin2/Handin2/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/live/Projects/TIERTS/TIERTSHandin2/Handin2/build/CMakeFiles/ZERO_CHECK.dir
