@@ -8,7 +8,7 @@ namespace systemx {
 	namespace app {
 		namespace state {
 			namespace base {
-				class PowerOnSelfTest : public IState {
+				class PowerOnSelfTestBase : public IState {
 				public:
 
 					void EnterState(ISystem* system, IStateMachine* statemachine);
@@ -16,10 +16,14 @@ namespace systemx {
 					void ExitState(ISystem* system, IStateMachine* statemachine);
 
 					void Restart(ISystem* system, IStateMachine* statemachine);
+
+					void SelftestOk(ISystem* system, IStateMachine* statemachine);
+
+					void SelfTestFailed(ISystem* system, IStateMachine* statemachine);
 				};
 			}
 			
-			using PowerOnSelfTest = Singleton<base::PowerOnSelfTest>;
+			using PowerOnSelfTest = Singleton<base::PowerOnSelfTestBase>;
 		}
 	}
 }

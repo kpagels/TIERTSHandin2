@@ -19,6 +19,11 @@ namespace systemx {
 				display.cout << value << os::endl;
 			}
 
+			bool systemSelftest(void) {
+				return systemSelftest_;
+			}
+
+
 			os::ostream& logger() {
 				return display.cout;
 			}
@@ -26,6 +31,8 @@ namespace systemx {
 			void Restart() {
 				statemachine.Restart();
 			}
+
+			bool systemSelftest_ = false;
 
 		private:
 			ui::Display display;

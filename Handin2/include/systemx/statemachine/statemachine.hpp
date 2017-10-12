@@ -22,6 +22,15 @@ namespace systemx {
 				state->Restart(system, this);
 			}
 
+			void SelfTestFailed() {
+				state->SelfTestFailed(system, this);
+			}
+
+			void SelftestOk() {
+				state->SelftestOk(system, this);
+			}
+
+
 		private:
 
 			void EnterState();

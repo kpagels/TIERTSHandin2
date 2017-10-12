@@ -26,6 +26,8 @@ namespace systemx {
 				display.cout << "Real " << real->get_value() << os::endl;
 				delete fake;
 				delete real;
+
+				systemSelftest_ = true;
 				statemachine.Restart();
 				statemachine.Restart();
 			}
