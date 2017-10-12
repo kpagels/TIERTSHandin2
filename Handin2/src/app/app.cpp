@@ -1,5 +1,9 @@
 #include "systemx/app/app.hpp"
 
+#include "systemx/app/states/poweronselftest.hpp"
+#include "systemx/app/states/failure.hpp"
+#include "systemx/app/states/initializing.hpp"
+
 #include "systemx/hw/clock.hpp"
 #include "systemx/hw/fakeclock.hpp"
 #include "systemx/comm/itimesensor.hpp"
@@ -9,10 +13,11 @@
 #include "systemx/os/iostream.hpp"
 #include "systemx/statemachine/istatemachine.hpp"
 
+
 namespace systemx {
 	namespace app {
 
-			App::App(ui::IDisplay* display) : display(display) {}
+			App::App(ui::IDisplay* display) : statemachine(this, state::PowerOnSelfTest::Instance()), display(display) {}
 
 			void App::run(void) {
 				comm::ITimeSensor* fake = new comm::ClockTimeSensor<hw::FakeClock>();
@@ -21,6 +26,8 @@ namespace systemx {
 				display.cout << "Real " << real->get_value() << os::endl;
 				delete fake;
 				delete real;
+				statemachine.Restart();
+				statemachine.Restart();
 			}
 		
 

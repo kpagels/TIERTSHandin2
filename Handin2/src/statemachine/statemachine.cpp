@@ -9,8 +9,13 @@ namespace systemx {
 			EnterState();
 		}
 
-		void StateMachine::ExitState(void) {};
-		void StateMachine::EnterState(void) {};
+		void StateMachine::ExitState() {
+			state->ExitState(system, this);
+		};
+
+		void StateMachine::EnterState() {
+			state->EnterState(system, this);
+		};
 	}
 }
 

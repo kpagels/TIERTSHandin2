@@ -1,13 +1,45 @@
 #ifndef ISTATEMACHINE_HPP_
 #define ISTATEMACHINE_HPP_
 
+#include "systemx/os/ostream.hpp"
+
 namespace systemx {
 		namespace statemachine {
-			class IState {
-				
+
+			class ISystem {
+			public:
+				virtual os::ostream& logger() = 0;
+				virtual void display_value(int value) = 0;
 			};
 
-			class IStateData {};
+			class IStateMachine;
+
+			class IState {
+			public:
+				virtual void EnterState(ISystem* system, IStateMachine* statemachine) {}
+				virtual void ExitState(ISystem* system, IStateMachine* statemachine) {}
+				virtual void Restart(ISystem* system, IStateMachine* statemachine) {
+
+				}
+			};
+
+			class IStateMachine {
+			public:
+				virtual void Restart() = 0;
+
+				virtual void EnterState() = 0;
+				virtual void ExitState() = 0;
+
+				virtual void ChangeState(IState* state) = 0;
+			};
+
+			
+
+			
+
+			class IStateData {
+			
+			};
 		}
 }
 

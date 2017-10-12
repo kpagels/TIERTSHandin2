@@ -4,20 +4,32 @@
 #include "systemx/app/iapp.hpp"
 #include "systemx/ui/idisplay.hpp"
 #include "systemx/ui/display.hpp"
+#include "systemx/os/iostream.hpp"
 #include "systemx/statemachine/statemachine.hpp"
 
 namespace systemx {
 	namespace app {
 
-		class App : public IApp, public statemachine::StateMachine {
+		class App : public IApp, public statemachine::ISystem  {
 		public:
 			App(ui::IDisplay* display);
 			void run(void);
 
+			void display_value(int value) {
+				display.cout << value << os::endl;
+			}
 
-			
+			os::ostream& logger() {
+				return display.cout;
+			}
+
+			void Restart() {
+				statemachine.Restart();
+			}
+
 		private:
 			ui::Display display;
+			statemachine::StateMachine statemachine;
 		};
 
 	}
