@@ -16,6 +16,9 @@
     <ClCompile Include="C:\Users\live\Projects\TIERTS\TIERTSHandin2\Handin2\src\ui\consoledisplay.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\live\Projects\TIERTS\TIERTSHandin2\Handin2\src\statemachine\statemachine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\live\Projects\TIERTS\TIERTSHandin2\Handin2\CMakeLists.txt" />

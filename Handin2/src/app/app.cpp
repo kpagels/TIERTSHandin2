@@ -7,6 +7,7 @@
 #include "systemx/ui/consoledisplay.hpp"
 #include "systemx/ui/display.hpp"
 #include "systemx/os/iostream.hpp"
+#include "systemx/statemachine/istatemachine.hpp"
 
 namespace systemx {
 	namespace app {
