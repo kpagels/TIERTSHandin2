@@ -115,10 +115,15 @@ namespace systemx {
 			};
 
 			void startRealTimeLoop(void) {
+				isInRealTimeLoop = true;
+				// Start thread
 				run();
 			}
 
 			void stopRealTimeLoop(void) {
+				//Lock
+				isInRealTimeLoop = false;
+				//Join
 
 			}
 
@@ -200,6 +205,8 @@ namespace systemx {
 		private:
 			ui::Display display;
 			statemachine::StateMachine statemachine;
+
+			bool isInRealTimeLoop = false;
 
 			comm::ITimeSensor* real_input = nullptr;
 			comm::ITimeSensor* sim_input = nullptr;

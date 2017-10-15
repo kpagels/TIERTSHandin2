@@ -10,7 +10,7 @@ namespace systemx {
 			public:
 				virtual os::ostream& logger() = 0;
 				
-				bool isInRealTimeLoop = false;
+				
 
 				virtual void display_value(int value) = 0;
 				virtual void systemSelftest(void) = 0;
