@@ -95,6 +95,26 @@ namespace systemx {
 				statemachine.ConfigurationEnded();
 			}
 
+			void EventX() {
+				statemachine.EventX();
+			}
+
+			void EventY() {
+				statemachine.EventY();
+			}
+
+			void chMode() {
+				statemachine.chMode();
+			}
+
+			void RunRealTime() {
+				statemachine.RunRealTime();
+			}
+
+			void Simulate() {
+				statemachine.Simulate();
+			}
+
 			bool systemSelftest_ = false;
 
 		private:

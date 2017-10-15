@@ -41,6 +41,13 @@ namespace systemx {
 				virtual void Configure(ISystem* system, IStateMachine* statemachine) {}
 				virtual void ConfigurationEnded(ISystem* system, IStateMachine* statemachine) {}
 
+				virtual void EventX(ISystem* system, IStateMachine* statemachine) {}
+				virtual void EventY(ISystem* system, IStateMachine* statemachine) {}
+				virtual void chMode(ISystem* system, IStateMachine* statemachine) {}
+				virtual void RunRealTime(ISystem* system, IStateMachine* statemachine) {}
+				virtual void Simulate(ISystem* system, IStateMachine* statemachine) {}
+
+
 			};
 
 			class IStateData {
@@ -71,6 +78,12 @@ namespace systemx {
 				virtual void ConfigX() = 0;
 				virtual void Configure() = 0;
 				virtual void ConfigurationEnded() = 0;
+
+				virtual void EventX() = 0;
+				virtual void EventY() = 0;
+				virtual void chMode() = 0;
+				virtual void RunRealTime() = 0;
+				virtual void Simulate() = 0;
 
 				virtual void ChangeState(IState* state) = 0;
 

@@ -66,6 +66,26 @@ namespace systemx {
 				state->ConfigurationEnded(system, this);
 			}
 
+			void EventX() {
+				state->EventX(system, this);
+			}
+
+			void EventY() {
+				state->EventY(system, this);
+			}
+
+			void chMode() {
+				state->chMode(system, this);
+			}
+
+			void RunRealTime() {
+				state->RunRealTime(system, this);
+			}
+
+			void Simulate() {
+				state->Simulate(system, this);
+			}
+
 		private:
 
 			void EnterState();

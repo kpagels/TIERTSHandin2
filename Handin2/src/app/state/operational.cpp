@@ -65,6 +65,28 @@ namespace systemx {
 					substatemachine(statemachine)->ConfigurationEnded();
 				};
 
+				void OperationalBase::EventX(ISystem* system, IStateMachine* statemachine) {
+					substatemachine(statemachine)->EventX();
+				};
+
+				void OperationalBase::EventY(ISystem* system, IStateMachine* statemachine) {
+					substatemachine(statemachine)->EventY();
+				};
+
+				void OperationalBase::chMode(ISystem* system, IStateMachine* statemachine) {
+					substatemachine(statemachine)->chMode();
+				};
+
+				void OperationalBase::RunRealTime(ISystem* system, IStateMachine* statemachine) {
+					substatemachine(statemachine)->RunRealTime();
+				};
+
+				void OperationalBase::Simulate(ISystem* system, IStateMachine* statemachine) {
+					substatemachine(statemachine)->Simulate();
+				};
+
+
+
 			}
 		}
 	}

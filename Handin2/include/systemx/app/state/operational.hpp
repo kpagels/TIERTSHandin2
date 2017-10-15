@@ -31,6 +31,12 @@ namespace systemx {
 					void Configure(ISystem* system, IStateMachine* statemachine);
 					void ConfigurationEnded(ISystem* system, IStateMachine* statemachine);
 
+					void EventX(ISystem* system, IStateMachine* statemachine);
+					void EventY(ISystem* system, IStateMachine* statemachine);
+					void chMode(ISystem* system, IStateMachine* statemachine);
+					void RunRealTime(ISystem* system, IStateMachine* statemachine);
+					void Simulate(ISystem* system, IStateMachine* statemachine);
+
 				private:
 					IStateMachine* substatemachine(IStateMachine* statemachine);
 

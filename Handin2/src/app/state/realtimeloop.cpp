@@ -13,8 +13,6 @@ namespace systemx {
 		namespace state {
 			namespace base {
 
-				
-
 				void RealTimeLoopBase::EnterState(ISystem* system, IStateMachine* statemachine) {
 					system->logger() << "EnterState: RealTimeLoop" << os::endl;
 					statemachine->state_data = new AndStates{
@@ -83,6 +81,31 @@ namespace systemx {
 				void RealTimeLoopBase::ConfigurationEnded(ISystem* system, IStateMachine* statemachine) {
 					substatemachines(statemachine)->statemachine1->ConfigurationEnded();
 					substatemachines(statemachine)->statemachine2->ConfigurationEnded();
+				};
+
+				void RealTimeLoopBase::EventX(ISystem* system, IStateMachine* statemachine) {
+					substatemachines(statemachine)->statemachine1->EventX();
+					substatemachines(statemachine)->statemachine2->EventX();
+				};
+
+				void RealTimeLoopBase::EventY(ISystem* system, IStateMachine* statemachine) {
+					substatemachines(statemachine)->statemachine1->EventY();
+					substatemachines(statemachine)->statemachine2->EventY();
+				};
+
+				void RealTimeLoopBase::chMode(ISystem* system, IStateMachine* statemachine) {
+					substatemachines(statemachine)->statemachine1->chMode();
+					substatemachines(statemachine)->statemachine2->chMode();
+				};
+
+				void RealTimeLoopBase::RunRealTime(ISystem* system, IStateMachine* statemachine) {
+					substatemachines(statemachine)->statemachine1->RunRealTime();
+					substatemachines(statemachine)->statemachine2->RunRealTime();
+				};
+
+				void RealTimeLoopBase::Simulate(ISystem* system, IStateMachine* statemachine) {
+					substatemachines(statemachine)->statemachine1->Simulate();
+					substatemachines(statemachine)->statemachine2->Simulate();
 				};
 
 			}
