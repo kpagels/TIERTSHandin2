@@ -3,6 +3,7 @@
 #include "systemx/app/state/realtimeloop.hpp"
 #include "systemx/app/state/poweronselftest.hpp"
 #include "systemx/app/state/ready.hpp"
+#include "systemx/app/state/suspended.hpp"
 #include "systemx/statemachine/statemachine.hpp"
 
 namespace systemx {
@@ -49,7 +50,7 @@ namespace systemx {
 					statemachine->ChangeState(Ready::Instance());
 				};
 				void RealTimeLoopBase::Suspend(ISystem* system, IStateMachine* statemachine) {
-					//statemachine->ChangeState(Suspend::Instance());
+					statemachine->ChangeState(Suspended::Instance());
 				};
 				void RealTimeLoopBase::Resume(ISystem* system, IStateMachine* statemachine) {
 					substatemachines(statemachine)->statemachine1->Resume();

@@ -28,8 +28,20 @@ namespace systemx {
 				delete real;
 
 				systemSelftest_ = true;
+
+				display.cout << " Event: Restart" << os::endl;
 				statemachine.Restart();
 
+				display.cout << " Event: Start" << os::endl;
+				statemachine.Start();
+
+				display.cout << " Event: Suspend" << os::endl;
+				statemachine.Suspend();
+
+				display.cout << " Event: Stop" << os::endl;
+				statemachine.Stop();
+
+				display.cout << " Event: Start" << os::endl;
 				statemachine.Start();
 				
 			}
