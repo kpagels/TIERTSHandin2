@@ -17,6 +17,7 @@ include/systemx/app/statemachine.hpp
 include/systemx/comm/clocktimesensor.hpp
 include/systemx/comm/itimesensor.hpp
 include/systemx/comm/itimewriter.hpp
+include/systemx/comm/timewriter.hpp
 include/systemx/hw/clock.hpp
 include/systemx/hw/fakeclock.hpp
 include/systemx/hw/iclock.hpp

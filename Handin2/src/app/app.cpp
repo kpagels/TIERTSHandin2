@@ -17,15 +17,17 @@
 namespace systemx {
 	namespace app {
 
-			App::App(ui::IDisplay* display) : statemachine(this, state::PowerOnSelfTest::Instance()), display(display) {}
+			App::App(ui::IDisplay* display) :
+				statemachine(this, state::PowerOnSelfTest::Instance()),
+				display(display),
+				real_input(new comm::ClockTimeSensor<hw::Clock>()),
+				sim_input(new comm::ClockTimeSensor<hw::FakeClock>()),
+				input(nullptr)
+				{
+			}
 
 			void App::start(void) {
-				comm::ITimeSensor* fake = new comm::ClockTimeSensor<hw::FakeClock>();
-				comm::ITimeSensor* real = new comm::ClockTimeSensor<hw::Clock>();
-				display.cout << "Fake " << fake->get_value() << os::endl;
-				display.cout << "Real " << real->get_value() << os::endl;
-				delete fake;
-				delete real;
+				
 
 				systemSelftest_ = true;
 

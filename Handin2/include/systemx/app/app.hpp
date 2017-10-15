@@ -130,9 +130,17 @@ namespace systemx {
 			ui::Display display;
 			statemachine::StateMachine statemachine;
 
+			comm::ITimeSensor* real_input = nullptr;
+			comm::ITimeSensor* sim_input = nullptr;
 			comm::ITimeSensor* input = nullptr;
+
+			comm::ITimeWriter* real_output = nullptr;
+			comm::ITimeWriter* sim_output = nullptr;
 			comm::ITimeWriter* output = nullptr;
-			//ITimeStrategy* strategy;
+
+			//ITimeStrategy* strategy = nullptr;
+			//ITimeStrategy* strategy = nullptr;
+			//ITimeStrategy* strategy = nullptr;
 
 		};
 
