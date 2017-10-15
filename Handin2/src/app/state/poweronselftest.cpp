@@ -9,10 +9,7 @@ namespace systemx {
 			namespace base {
 				void PowerOnSelfTestBase::EnterState(ISystem* system, IStateMachine* statemachine) {
 					system->logger() << "EnterState: PowerOnSelfTest" << os::endl;
-					if (system->systemSelftest())
-						statemachine->SelftestOk();
-					else
-						statemachine->SelfTestFailed();
+					system->systemSelftest();
 				}
 
 				void PowerOnSelfTestBase::ExitState(ISystem* system, IStateMachine* statemachine) {

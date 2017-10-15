@@ -11,7 +11,7 @@ int main(void) {
 	app::IApp* app_ptr = &app;
 
 	
-	app_ptr->run();
+	app_ptr->start();
 
 	char a;
 	std::cin >> a;

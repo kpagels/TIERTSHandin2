@@ -19,7 +19,7 @@ namespace systemx {
 
 			App::App(ui::IDisplay* display) : statemachine(this, state::PowerOnSelfTest::Instance()), display(display) {}
 
-			void App::run(void) {
+			void App::start(void) {
 				comm::ITimeSensor* fake = new comm::ClockTimeSensor<hw::FakeClock>();
 				comm::ITimeSensor* real = new comm::ClockTimeSensor<hw::Clock>();
 				display.cout << "Fake " << fake->get_value() << os::endl;
@@ -29,7 +29,7 @@ namespace systemx {
 
 				systemSelftest_ = true;
 				statemachine.Restart();
-				statemachine.Restart();
+				
 			}
 		
 

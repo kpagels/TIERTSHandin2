@@ -6,7 +6,7 @@ namespace systemx {
 
 		class IApp {
 		public:
-			virtual void run(void) = 0;
+			virtual void start(void) = 0;
 		};
 
 	}

@@ -6,7 +6,9 @@ include/systemx/app/app.hpp
 include/systemx/app/iapp.hpp
 include/systemx/app/state/failure.hpp
 include/systemx/app/state/initializing.hpp
+include/systemx/app/state/operational.hpp
 include/systemx/app/state/poweronselftest.hpp
+include/systemx/app/state/ready.hpp
 include/systemx/app/statemachine.hpp
 include/systemx/comm/clocktimesensor.hpp
 include/systemx/comm/itimesensor.hpp
@@ -28,7 +30,9 @@ set(SOURCES
 src/app/app.cpp
 src/app/state/failure.cpp
 src/app/state/initializing.cpp
+src/app/state/operational.cpp
 src/app/state/poweronselftest.cpp
+src/app/state/ready.cpp
 src/hw/clock.cpp
 src/hw/fakeclock.cpp
 src/main.cpp
