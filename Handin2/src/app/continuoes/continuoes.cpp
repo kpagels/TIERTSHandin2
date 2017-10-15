@@ -19,34 +19,34 @@ namespace systemx {
 			}
 
 			void IContinues::set_mode_real(void) {
-				// Lock
+				os::lock_guard<os::mutex> lock{ mutex };
 				input = real_input;
 				output = real_output;
 			}
 
 			void IContinues::set_mode_sim(void) {
-				// Lock
+				os::lock_guard<os::mutex> lock{ mutex };
 				input = sim_input;
 				output = sim_output;
 			}
 
 			void IContinues::set_mode_1(void) {
-				// Lock
+				os::lock_guard<os::mutex> lock{ mutex };
 				strategy = strategy1;
 			}
 
 			void IContinues::set_mode_2(void) {
-				// Lock
+				os::lock_guard<os::mutex> lock{ mutex };
 				strategy = strategy2;
 			}
 
 			void IContinues::set_mode_3(void) {
-				// Lock
+				os::lock_guard<os::mutex> lock{ mutex };
 				strategy = strategy3;
 			}
 
 			bool IContinues::get_loop_data(comm::ITimeSensor*& input, comm::ITimeWriter*& output, ITimeStrategy*& strategy) {
-				// Lock
+				os::lock_guard<os::mutex> lock{ mutex };
 				input = this->input;
 				output = this->output;
 				strategy = this->strategy;
@@ -60,7 +60,10 @@ namespace systemx {
 			}
 
 			void IContinues::stop(void) {
-				isInRealTimeLoop = false;
+				{
+					os::lock_guard<os::mutex> lock{ mutex };
+					isInRealTimeLoop = false;
+				}
 				delete real_runner;
 			}
 

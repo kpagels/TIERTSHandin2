@@ -13,6 +13,7 @@
 
 #include "systemx/os/thread.hpp"
 #include "systemx/os/chrono.hpp"
+#include "systemx/os/mutex.hpp"
 
 #include "systemx/app/continuoes/itimestrategy.hpp"
 
@@ -64,6 +65,9 @@ namespace systemx {
 				ITimeStrategy* strategy3 = nullptr;
 
 				RealTimeThread* real_runner;
+
+				os::mutex mutex;
+
 			};
 
 			

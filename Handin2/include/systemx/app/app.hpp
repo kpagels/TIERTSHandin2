@@ -10,8 +10,7 @@
 #include "systemx/statemachine/istatemachine.hpp"
 #include "systemx/statemachine/statemachine.hpp"
 #include "systemx/statemachine/isystem.hpp"
-#include "systemx/comm/itimesensor.hpp"
-#include "systemx/comm/itimewriter.hpp"
+
 #include "systemx/app/continuoes/continuoes.hpp"
 
 namespace systemx {

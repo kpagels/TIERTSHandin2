@@ -8,6 +8,9 @@ namespace systemx {
     
     using mutex = std::mutex;
 
+	template< class Mutex >
+	using lock_guard = std::lock_guard<Mutex>;
+
     }
 }
 
