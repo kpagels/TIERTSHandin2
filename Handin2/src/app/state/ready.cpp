@@ -19,7 +19,6 @@ namespace systemx {
 				}
 
 				void ReadyBase::Start(ISystem* system, IStateMachine* statemachine) {
-					system->run();
 					statemachine->ChangeState(RealTimeLoop::Instance());
 				}
 

@@ -37,11 +37,16 @@ namespace systemx {
 				display.cout << "startInitializing" << os::endl;
 				Initalized();
 			}
-			void display_error(int ErrorNo) {}
-			void readConfigurationInfo(void) {}
-			void PerformConfigurationX(void) {}
-			void run(void) {};
 
+			void display_error(int ErrorNo) {}
+
+			void readConfigurationInfo(void) {}
+
+			void PerformConfigurationX(void) {}
+
+			void run(void) {
+				display.cout << "Running!" << os::endl;
+			};
 
 			os::ostream& logger() {
 				return display.cout;
@@ -116,6 +121,7 @@ namespace systemx {
 			}
 
 			bool systemSelftest_ = false;
+			bool isInRealTimeLoop = false;
 
 		private:
 			ui::Display display;
