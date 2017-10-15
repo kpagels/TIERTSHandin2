@@ -19,7 +19,14 @@ namespace systemx {
 				display.cout << value << os::endl;
 			}
 
+			
 			bool systemSelftest(void) {
+				display.cout << "  Running systemSelftest: ";
+				if (systemSelftest_)
+					display.cout << "OK!";
+				else
+					display.cout << "ERROR!";
+				display.cout << os::endl;
 				return systemSelftest_;
 			}
 

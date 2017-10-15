@@ -1,8 +1,8 @@
 #include "systemx/app/app.hpp"
 
-#include "systemx/app/states/poweronselftest.hpp"
-#include "systemx/app/states/failure.hpp"
-#include "systemx/app/states/initializing.hpp"
+#include "systemx/app/state/poweronselftest.hpp"
+#include "systemx/app/state/failure.hpp"
+#include "systemx/app/state/initializing.hpp"
 
 #include "systemx/hw/clock.hpp"
 #include "systemx/hw/fakeclock.hpp"

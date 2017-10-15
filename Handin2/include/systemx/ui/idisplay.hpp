@@ -9,8 +9,6 @@ namespace ui {
 	class IDisplay {
 	public:		
 		virtual os::ostream& get_cout() = 0;
-		
-
 	};
 
 }

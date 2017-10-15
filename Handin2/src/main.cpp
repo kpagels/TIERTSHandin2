@@ -13,5 +13,7 @@ int main(void) {
 	
 	app_ptr->run();
 
+	char a;
+	std::cin >> a;
    return 0;
 }

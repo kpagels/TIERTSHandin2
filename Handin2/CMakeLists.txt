@@ -4,10 +4,10 @@ project (systemx)
 set(HEADERS 
 include/systemx/app/app.hpp
 include/systemx/app/iapp.hpp
+include/systemx/app/state/failure.hpp
+include/systemx/app/state/initializing.hpp
+include/systemx/app/state/poweronselftest.hpp
 include/systemx/app/statemachine.hpp
-include/systemx/app/states/failure.hpp
-include/systemx/app/states/initializing.hpp
-include/systemx/app/states/poweronselftest.hpp
 include/systemx/comm/clocktimesensor.hpp
 include/systemx/comm/itimesensor.hpp
 include/systemx/hw/clock.hpp
@@ -26,9 +26,9 @@ include/systemx/ui/idisplay.hpp
 
 set(SOURCES
 src/app/app.cpp
-src/app/states/failure.cpp
-src/app/states/initializing.cpp
-src/app/states/poweronselftest.cpp
+src/app/state/failure.cpp
+src/app/state/initializing.cpp
+src/app/state/poweronselftest.cpp
 src/hw/clock.cpp
 src/hw/fakeclock.cpp
 src/main.cpp

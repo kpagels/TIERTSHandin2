@@ -1,6 +1,7 @@
 #include "systemx/os/iostream.hpp"
-#include "systemx/app/states/poweronselftest.hpp"
-#include "systemx/app/states/failure.hpp"
+#include "systemx/app/state/poweronselftest.hpp"
+#include "systemx/app/state/failure.hpp"
+#include "systemx/app/state/initializing.hpp"
 
 namespace systemx {
 	namespace app {
@@ -18,16 +19,14 @@ namespace systemx {
 					system->logger() << "ExitState: PowerOnSelfTest" << os::endl;
 				}
 
+
+
 				void PowerOnSelfTestBase::SelftestOk(ISystem* system, IStateMachine* statemachine) {
-					statemachine->ChangeState(Failure::Instance());
+					statemachine->ChangeState(Initializing::Instance());
 				}
 
 				void PowerOnSelfTestBase::SelfTestFailed(ISystem* system, IStateMachine* statemachine) {
 					statemachine->ChangeState(Failure::Instance());
-				}
-
-				void PowerOnSelfTestBase::Restart(ISystem* system, IStateMachine* statemachine) {
-					system->display_value(10);
 				}
 			}
 		}

@@ -1,6 +1,6 @@
 #include "systemx/os/iostream.hpp"
-#include "systemx/app/states/failure.hpp"
-#include "systemx/app/states/poweronselftest.hpp"
+#include "systemx/app/state/failure.hpp"
+#include "systemx/app/state/poweronselftest.hpp"
 
 namespace systemx {
 	namespace app {

@@ -15,7 +15,7 @@ namespace systemx {
 
 					void ExitState(ISystem* system, IStateMachine* statemachine);
 
-					void Restart(ISystem* system, IStateMachine* statemachine);
+
 
 					void SelftestOk(ISystem* system, IStateMachine* statemachine);
 
