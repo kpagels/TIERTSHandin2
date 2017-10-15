@@ -4,6 +4,8 @@
 #include "systemx/app/state/poweronselftest.hpp"
 #include "systemx/app/state/ready.hpp"
 #include "systemx/app/state/suspended.hpp"
+#include "systemx/app/state/mode1.hpp"
+#include "systemx/app/state/realtimeexecution.hpp"
 #include "systemx/statemachine/statemachine.hpp"
 
 namespace systemx {
@@ -16,8 +18,8 @@ namespace systemx {
 				void RealTimeLoopBase::EnterState(ISystem* system, IStateMachine* statemachine) {
 					system->logger() << "EnterState: RealTimeLoop" << os::endl;
 					statemachine->state_data = new AndStates{
-						new StateMachine(system, Ready::Instance()),
-						new StateMachine(system, Ready::Instance())
+						new StateMachine(system, Mode1::Instance()),
+						new StateMachine(system, RealTimeExecution::Instance())
 					};
 				}
 
