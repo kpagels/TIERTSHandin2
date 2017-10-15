@@ -130,7 +130,7 @@ namespace systemx {
 					value_type data = input->get_value();
 					data = strategy->calc(data);
 					output->set_value(data);
-					os::this_thread::sleep_for(1s);
+					os::this_thread::sleep_for(2s);
 				}
 
 			};
