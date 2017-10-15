@@ -20,7 +20,7 @@ int main(void) {
 			app.Simulate();
 		if (a == 'r')
 			app.RunRealTime();
-		if (a == '1')
+		if (a == 'c')
 			app.chMode();
 		std::cin >> a;
 	}

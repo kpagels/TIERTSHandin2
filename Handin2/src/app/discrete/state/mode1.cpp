@@ -4,6 +4,7 @@
 #include "systemx/app/discrete/istatemachine.hpp"
 
 #include "systemx/app/discrete/state/mode1.hpp"
+#include "systemx/app/discrete/state/mode2.hpp"
 
 namespace systemx {
 	namespace app {
@@ -17,6 +18,10 @@ namespace systemx {
 
 				void Mode1Base::ExitState(ISystem* system, IStateMachine* statemachine) {
 					system->logger() << "ExitState: Mode1" << os::endl;
+				}
+
+				void Mode1Base::chMode(ISystem* system, IStateMachine* statemachine) {
+					statemachine->ChangeState(Mode2::Instance());
 				}
 			}
 		}

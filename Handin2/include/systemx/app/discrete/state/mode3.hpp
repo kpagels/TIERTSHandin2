@@ -1,5 +1,5 @@
-#ifndef MODE1_HPP_
-#define MODE1_HPP_
+#ifndef MODE3_HPP_
+#define MODE3_HPP_
 
 #include "systemx/app/discrete/statemachine.hpp"
 #include "systemx/app/discrete/singleton.hpp"
@@ -9,7 +9,7 @@ namespace systemx {
 	namespace app {
 		namespace state {
 			namespace base {
-				class Mode1Base : public IState {
+				class Mode3Base : public IState {
 				public:
 
 					void EnterState(ISystem* system, IStateMachine* statemachine);
@@ -21,9 +21,9 @@ namespace systemx {
 				};
 			}
 
-			using Mode1 = Singleton<base::Mode1Base>;
+			using Mode3 = Singleton<base::Mode3Base>;
 		}
 	}
 }
 
-#endif // !MODE1_HPP_
+#endif // !MODE3_HPP_

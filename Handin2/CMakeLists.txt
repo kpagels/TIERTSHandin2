@@ -17,6 +17,8 @@ include/systemx/app/discrete/singleton.hpp
 include/systemx/app/discrete/state/failure.hpp
 include/systemx/app/discrete/state/initializing.hpp
 include/systemx/app/discrete/state/mode1.hpp
+include/systemx/app/discrete/state/mode2.hpp
+include/systemx/app/discrete/state/mode3.hpp
 include/systemx/app/discrete/state/operational.hpp
 include/systemx/app/discrete/state/poweronselftest.hpp
 include/systemx/app/discrete/state/ready.hpp
@@ -53,6 +55,8 @@ src/app/continuoes/realtimethread.cpp
 src/app/discrete/state/failure.cpp
 src/app/discrete/state/initializing.cpp
 src/app/discrete/state/mode1.cpp
+src/app/discrete/state/mode2.cpp
+src/app/discrete/state/mode3.cpp
 src/app/discrete/state/operational.cpp
 src/app/discrete/state/poweronselftest.cpp
 src/app/discrete/state/ready.cpp

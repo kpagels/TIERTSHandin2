@@ -20,15 +20,21 @@ namespace systemx {
 			};
 
 			class TimeStrategy1 : public ITimeStrategy {
-
+				virtual value_type calc(value_type data) {
+					return data / 2;
+				}
 			};
 
 			class TimeStrategy2 : public ITimeStrategy {
-
+				virtual value_type calc(value_type data) {
+					return data;
+				}
 			};
 
 			class TimeStrategy3 : public ITimeStrategy {
-
+				virtual value_type calc(value_type data) {
+					return data * 2;
+				}
 			};
 		}
 	}
