@@ -3,6 +3,7 @@ project (systemx)
 
 set(HEADERS 
 include/systemx/app/app.hpp
+include/systemx/app/continuoes/continuoes.hpp
 include/systemx/app/iapp.hpp
 include/systemx/app/state/failure.hpp
 include/systemx/app/state/initializing.hpp

@@ -66,10 +66,7 @@ namespace systemx {
 				os::this_thread::sleep_for(2s);
 				display.cout << " Event: RunRealTime" << os::endl;
 				RunRealTime();
-				
 
-
-				
 			}
 		
 
