@@ -1,7 +1,8 @@
 #ifndef READY_HPP_
 #define READY_HPP_
 
-#include "systemx/app/statemachine.hpp"
+#include "systemx/app/discrete/singleton.hpp"
+#include "systemx/app/discrete/statemachine.hpp"
 #include "systemx/os/ostream.hpp"
 
 namespace systemx {

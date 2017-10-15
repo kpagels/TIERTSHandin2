@@ -1,9 +1,12 @@
 #include "systemx/os/iostream.hpp"
-#include "systemx/app/state/initializing.hpp"
-#include "systemx/app/state/operational.hpp"
-#include "systemx/app/state/poweronselftest.hpp"
-#include "systemx/app/state/ready.hpp"
-#include "systemx/statemachine/statemachine.hpp"
+
+#include "systemx/app/discrete/isystem.hpp"
+#include "systemx/app/discrete/istatemachine.hpp"
+
+#include "systemx/app/discrete/state/operational.hpp"
+#include "systemx/app/discrete/state/ready.hpp"
+#include "systemx/app/discrete/state/poweronselftest.hpp"
+
 
 namespace systemx {
 	namespace app {
@@ -24,9 +27,13 @@ namespace systemx {
 					return static_cast<StateMachine*>(statemachine->state_data);
 				}
 
+
+
 				void OperationalBase::Restart(ISystem* system, IStateMachine* statemachine) {
 					statemachine->ChangeState(PowerOnSelfTest::Instance());
 				}
+
+
 
 				void OperationalBase::Exit(ISystem* system, IStateMachine* statemachine) {
 					substatemachine(statemachine)->Exit();

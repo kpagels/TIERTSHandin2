@@ -1,10 +1,11 @@
 #include "systemx/os/iostream.hpp"
-#include "systemx/app/state/initializing.hpp"
-#include "systemx/app/state/operational.hpp"
-#include "systemx/app/state/realtimeexecution.hpp"
-#include "systemx/app/state/realtimeloop.hpp"
-#include "systemx/app/state/simulation.hpp"
-#include "systemx/statemachine/statemachine.hpp"
+
+#include "systemx/app/discrete/isystem.hpp"
+#include "systemx/app/discrete/istatemachine.hpp"
+
+#include "systemx/app/discrete/state/realtimeexecution.hpp"
+#include "systemx/app/discrete/state/simulation.hpp"
+
 
 namespace systemx {
 	namespace app {

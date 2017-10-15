@@ -2,8 +2,8 @@
 #define ISTATEMACHINE_HPP_
 
 #include "systemx/os/ostream.hpp"
-#include "systemx/statemachine/isystem.hpp"
-#include "systemx/statemachine/istate.hpp"
+#include "systemx/app/discrete/isystem.hpp"
+#include "systemx/app/discrete/istate.hpp"
 
 
 namespace systemx {

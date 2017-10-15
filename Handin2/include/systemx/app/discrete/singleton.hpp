@@ -1,7 +1,7 @@
 #ifndef APP_STATEMACHINE_HPP_
 #define APP_STATEMACHINE_HPP_
 
-#include "systemx/statemachine/istatemachine.hpp"
+#include "systemx/app/discrete/istatemachine.hpp"
 
 namespace systemx {
 	namespace app {

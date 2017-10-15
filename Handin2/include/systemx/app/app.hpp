@@ -7,9 +7,9 @@
 #include "systemx/os/iostream.hpp"
 #include "systemx/os/thread.hpp"
 #include "systemx/os/chrono.hpp"
-#include "systemx/statemachine/istatemachine.hpp"
-#include "systemx/statemachine/statemachine.hpp"
-#include "systemx/statemachine/isystem.hpp"
+#include "systemx/app/discrete/istatemachine.hpp"
+#include "systemx/app/discrete/statemachine.hpp"
+#include "systemx/app/discrete/isystem.hpp"
 
 #include "systemx/app/continuoes/continuoes.hpp"
 

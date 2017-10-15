@@ -1,8 +1,8 @@
 #ifndef STATEMACHINE_HPP_
 #define STATEMACHINE_HPP_
 
-#include "systemx/statemachine/istate.hpp"
-#include "systemx/statemachine/istatemachine.hpp"
+#include "systemx/app/discrete/istate.hpp"
+#include "systemx/app/discrete/istatemachine.hpp"
 
 
 namespace systemx {

@@ -1,12 +1,15 @@
 #include "systemx/os/iostream.hpp"
-#include "systemx/app/state/initializing.hpp"
-#include "systemx/app/state/realtimeloop.hpp"
-#include "systemx/app/state/poweronselftest.hpp"
-#include "systemx/app/state/ready.hpp"
-#include "systemx/app/state/suspended.hpp"
-#include "systemx/app/state/mode1.hpp"
-#include "systemx/app/state/realtimeexecution.hpp"
-#include "systemx/statemachine/statemachine.hpp"
+
+#include "systemx/app/discrete/isystem.hpp"
+#include "systemx/app/discrete/istatemachine.hpp"
+
+
+#include "systemx/app/discrete/state/realtimeloop.hpp"
+#include "systemx/app/discrete/state/ready.hpp"
+#include "systemx/app/discrete/state/suspended.hpp"
+#include "systemx/app/discrete/state/mode1.hpp"
+#include "systemx/app/discrete/state/realtimeexecution.hpp"
+
 
 namespace systemx {
 	namespace app {
@@ -33,9 +36,19 @@ namespace systemx {
 					system->logger() << "ExitState: RealTimeLoop" << os::endl;
 				}
 
+				void RealTimeLoopBase::Stop(ISystem* system, IStateMachine* statemachine) {
+					statemachine->ChangeState(Ready::Instance());
+				};
+
+				void RealTimeLoopBase::Suspend(ISystem* system, IStateMachine* statemachine) {
+					statemachine->ChangeState(Suspended::Instance());
+				};
+
 				AndStates* RealTimeLoopBase::substatemachines(IStateMachine* statemachine) {
 					return static_cast<AndStates*>(statemachine->state_data);
 				}
+
+
 
 				void RealTimeLoopBase::Restart(ISystem* system, IStateMachine* statemachine) {
 					substatemachines(statemachine)->statemachine1->Restart();
@@ -51,12 +64,7 @@ namespace systemx {
 					substatemachines(statemachine)->statemachine1->Start();
 					substatemachines(statemachine)->statemachine2->Start();
 				};
-				void RealTimeLoopBase::Stop(ISystem* system, IStateMachine* statemachine) {
-					statemachine->ChangeState(Ready::Instance());
-				};
-				void RealTimeLoopBase::Suspend(ISystem* system, IStateMachine* statemachine) {
-					statemachine->ChangeState(Suspended::Instance());
-				};
+				
 				void RealTimeLoopBase::Resume(ISystem* system, IStateMachine* statemachine) {
 					substatemachines(statemachine)->statemachine1->Resume();
 					substatemachines(statemachine)->statemachine2->Resume();

@@ -1,6 +1,10 @@
 #include "systemx/os/iostream.hpp"
-#include "systemx/app/state/initializing.hpp"
-#include "systemx/app/state/operational.hpp"
+
+#include "systemx/app/discrete/isystem.hpp"
+#include "systemx/app/discrete/istatemachine.hpp"
+
+#include "systemx/app/discrete/state/initializing.hpp"
+#include "systemx/app/discrete/state/operational.hpp"
 
 namespace systemx {
 	namespace app {

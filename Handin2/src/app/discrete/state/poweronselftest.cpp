@@ -1,7 +1,11 @@
 #include "systemx/os/iostream.hpp"
-#include "systemx/app/state/poweronselftest.hpp"
-#include "systemx/app/state/failure.hpp"
-#include "systemx/app/state/initializing.hpp"
+
+#include "systemx/app/discrete/isystem.hpp"
+#include "systemx/app/discrete/istatemachine.hpp"
+
+#include "systemx/app/discrete/state/poweronselftest.hpp"
+#include "systemx/app/discrete/state/failure.hpp"
+#include "systemx/app/discrete/state/initializing.hpp"
 
 namespace systemx {
 	namespace app {
