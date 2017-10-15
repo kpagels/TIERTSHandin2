@@ -26,23 +26,15 @@ namespace systemx {
 
 			void App::start(void) {
 				
-
-				systemSelftest_ = true;
-
-				display.cout << " Event: Restart" << os::endl;
-				Restart();
-
-				display.cout << " Event: Start" << os::endl;
-				Start();
-
-				display.cout << " Event: Suspend" << os::endl;
-				Suspend();
-
-				display.cout << " Event: Stop" << os::endl;
-				Stop();
-
-				display.cout << " Event: Start" << os::endl;
-				Start();
+				while (running) {
+					os::unique_lock<os::mutex> lock{ mutex };
+					cv.wait(lock, [this] {return !this->queue.empty(); });
+					std::function<void()> func = queue.front();
+					queue.pop_front();
+					lock.unlock();
+					func();
+				}
+				
 
 			}
 		

@@ -1,10 +1,13 @@
 #ifndef APP_HPP_
 #define APP_HPP_
 
+#include <deque>
+
 #include "systemx/app/iapp.hpp"
 #include "systemx/ui/idisplay.hpp"
 #include "systemx/ui/display.hpp"
 #include "systemx/os/iostream.hpp"
+#include "systemx/os/mutex.hpp"
 #include "systemx/app/discrete/istatemachine.hpp"
 #include "systemx/app/discrete/statemachine.hpp"
 #include "systemx/app/discrete/isystem.hpp"
@@ -56,80 +59,90 @@ namespace systemx {
 				return display.cout;
 			}
 
+			void add_event(std::function<void()> func) {
+				os::lock_guard<os::mutex> lock{ mutex };
+				queue.push_back(func);
+				cv.notify_one();
+			}
+
 			void Exit() {
-				statemachine.Exit();
+				add_event([this]() {this->statemachine.Exit(); });
 			}
 
 			void Start() {
-				statemachine.Start();
+				add_event([this]() {this->statemachine.Start(); });
 			}
 
 			void Restart() {
-				statemachine.Restart();
+				add_event([this]() {this->statemachine.Restart(); });
 			}
 
 			void Stop() {
-				statemachine.Stop();
+				add_event([this]() {this->statemachine.Stop(); });
 			}
 
 			void Suspend() {
-				statemachine.Suspend();
+				add_event([this]() {this->statemachine.Suspend(); });
 			}
 
 			void Resume() {
-				statemachine.Resume();
+				add_event([this]() {this->statemachine.Resume(); });
 			}
 
 			void SelfTestFailed() {
-				statemachine.SelfTestFailed();
+				add_event([this]() {this->statemachine.SelfTestFailed(); });
 			}
 
 			void SelftestOk() {
-				statemachine.SelftestOk();
+				add_event([this]() {this->statemachine.SelftestOk(); });
 			}
 
 			void Initalized() {
-				statemachine.Initalized();
+				add_event([this]() {this->statemachine.Initalized(); });
 			}
 
 			void ConfigX() {
-				statemachine.ConfigX();
+				add_event([this]() {this->statemachine.ConfigX(); });
 			}
 
 			void Configure() {
-				statemachine.Configure();
+				add_event([this]() {this->statemachine.Configure(); });
 			}
 
 			void ConfigurationEnded() {
-				statemachine.ConfigurationEnded();
+				add_event([this]() {this->statemachine.ConfigurationEnded(); });
 			}
 
 			void EventX() {
-				statemachine.EventX();
+				add_event([this]() {this->statemachine.EventX(); });
 			}
 
 			void EventY() {
-				statemachine.EventY();
+				add_event([this]() {this->statemachine.EventY(); });
 			}
 
 			void chMode() {
-				statemachine.chMode();
+				add_event([this]() {this->statemachine.chMode(); });
 			}
 
 			void RunRealTime() {
-				statemachine.RunRealTime();
+				add_event([this]() {this->statemachine.RunRealTime(); });
 			}
 
 			void Simulate() {
-				statemachine.Simulate();
+				add_event([this]() {this->statemachine.Simulate(); });
 			}
 
 			bool systemSelftest_ = false;
 			
 
 		private:
+			std::deque<std::function<void()>> queue;
+			os::mutex mutex;
+			os::condition_variable cv;
 			ui::Display display;
 			statemachine::StateMachine statemachine;		
+			bool running = true;
 
 		};
 
