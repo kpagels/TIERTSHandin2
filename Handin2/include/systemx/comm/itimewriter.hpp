@@ -1,19 +1,19 @@
-#ifndef ITIMESENSOR_HPP_
-#define ITIMESENSOR_HPP_
+#ifndef ITIMEWRITER_HPP_
+#define ITIMEWRITER_HPP_
 
 #include "systemx/os/chrono.hpp"
 
 namespace systemx {
 namespace comm {
 
-	class ITimeSensor {
+	class ITimeWriter {
 	public:
 		using value_type = os::chrono::seconds::rep;
 		
-		virtual value_type get_value(void) = 0;
+		virtual void set_value(value_type) = 0;
 	};
 
 }
 }
 
-#endif // !ITIMESENSOR_HPP_
+#endif // !ITIMEWRITER_HPP_

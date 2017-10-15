@@ -6,6 +6,8 @@
 #include "systemx/ui/display.hpp"
 #include "systemx/os/iostream.hpp"
 #include "systemx/statemachine/statemachine.hpp"
+#include "systemx/comm/itimesensor.hpp"
+#include "systemx/comm/itimewriter.hpp"
 
 namespace systemx {
 	namespace app {
@@ -46,6 +48,7 @@ namespace systemx {
 
 			void run(void) {
 				display.cout << "Running!" << os::endl;
+
 			};
 
 			os::ostream& logger() {
@@ -121,11 +124,16 @@ namespace systemx {
 			}
 
 			bool systemSelftest_ = false;
-			bool isInRealTimeLoop = false;
+			
 
 		private:
 			ui::Display display;
 			statemachine::StateMachine statemachine;
+
+			comm::ITimeSensor* input = nullptr;
+			comm::ITimeWriter* output = nullptr;
+			//ITimeStrategy* strategy;
+
 		};
 
 	}
