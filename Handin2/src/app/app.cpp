@@ -29,6 +29,8 @@ namespace systemx {
 
 				systemSelftest_ = true;
 				statemachine.Restart();
+
+				statemachine.Start();
 				
 			}
 		

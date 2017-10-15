@@ -51,6 +51,8 @@ namespace systemx {
 
 			class IStateMachine {
 			public:
+				virtual ~IStateMachine() = default;
+
 				virtual void EnterState() = 0;
 				virtual void ExitState() = 0;
 				

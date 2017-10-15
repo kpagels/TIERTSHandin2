@@ -15,6 +15,8 @@ namespace systemx {
 
 					void ExitState(ISystem* system, IStateMachine* statemachine);
 
+					void Start(ISystem* system, IStateMachine* statemachine);
+
 				};
 			}
 

@@ -2,6 +2,7 @@
 #include "systemx/app/state/initializing.hpp"
 #include "systemx/app/state/operational.hpp"
 #include "systemx/app/state/ready.hpp"
+#include "systemx/app/state/realtimeloop.hpp"
 #include "systemx/statemachine/statemachine.hpp"
 
 namespace systemx {
@@ -15,6 +16,11 @@ namespace systemx {
 
 				void ReadyBase::ExitState(ISystem* system, IStateMachine* statemachine) {
 					system->logger() << "ExitState: Ready" << os::endl;
+				}
+
+				void ReadyBase::Start(ISystem* system, IStateMachine* statemachine) {
+					system->run();
+					statemachine->ChangeState(RealTimeLoop::Instance());
 				}
 
 			}
