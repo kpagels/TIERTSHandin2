@@ -1,5 +1,5 @@
-#ifndef REALTIMEEXECUTION_HPP_
-#define REALTIMEEXECUTION_HPP_
+#ifndef SIMULATION_HPP_
+#define SIMULATION_HPP_
 
 #include "systemx/app/statemachine.hpp"
 #include "systemx/os/ostream.hpp"
@@ -8,20 +8,21 @@ namespace systemx {
 	namespace app {
 		namespace state {
 			namespace base {
-				class RealTimeExecutionBase : public IState {
+				class SimulationBase : public IState {
 				public:
 
 					void EnterState(ISystem* system, IStateMachine* statemachine);
 
 					void ExitState(ISystem* system, IStateMachine* statemachine);
 
-					void Simulate(ISystem* system, IStateMachine* statemachine);
+					void RunRealTime(ISystem* system, IStateMachine* statemachine);
+
 				};
 			}
 
-			using RealTimeExecution = Singleton<base::RealTimeExecutionBase>;
+			using Simulation = Singleton<base::SimulationBase>;
 		}
 	}
 }
 
-#endif // !REALTIMEEXECUTION_HPP_
+#endif // !SIMULATION_HPP_

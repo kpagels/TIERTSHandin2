@@ -12,6 +12,7 @@ include/systemx/app/state/poweronselftest.hpp
 include/systemx/app/state/ready.hpp
 include/systemx/app/state/realtimeloop.hpp
 include/systemx/app/state/realtimeexecution.hpp
+include/systemx/app/state/simulation.hpp
 include/systemx/app/state/suspended.hpp
 include/systemx/app/statemachine.hpp
 include/systemx/app/DiscreteProcessingThread.hpp
@@ -46,6 +47,7 @@ src/app/state/poweronselftest.cpp
 src/app/state/ready.cpp
 src/app/state/realtimeloop.cpp
 src/app/state/realtimeexecution.cpp
+src/app/state/simulation.cpp
 src/app/state/suspended.cpp
 src/hw/clock.cpp
 src/hw/fakeclock.cpp

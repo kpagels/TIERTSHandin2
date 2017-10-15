@@ -5,6 +5,8 @@
 #include "systemx/ui/idisplay.hpp"
 #include "systemx/ui/display.hpp"
 #include "systemx/os/iostream.hpp"
+#include "systemx/os/thread.hpp"
+#include "systemx/os/chrono.hpp"
 #include "systemx/statemachine/statemachine.hpp"
 #include "systemx/comm/itimesensor.hpp"
 #include "systemx/comm/itimewriter.hpp"
@@ -12,9 +14,26 @@
 namespace systemx {
 	namespace app {
 
+		class RealTimeThread : public os::thread {
+		public:
+			RealTimeThread(std::function<void()> run) : run_(run) {}
+
+			void run() {
+				run_();
+			}
+
+		private:
+			std::function<void()> run_;
+		};
+
 		class ITimeStrategy {
 		public:
+			using value_type = comm::ITimeSensor::value_type;
 			virtual ~ITimeStrategy() = default;
+			virtual value_type calc(value_type data) {
+				return data;
+			}
+			
 		};
 
 		class TimeStrategy1 : public ITimeStrategy {
@@ -100,6 +119,7 @@ namespace systemx {
 
 			void run(void) {
 				using value_type = comm::ITimeSensor::value_type;
+				using namespace std::chrono_literals;
 				display.cout << "Running!" << os::endl;
 
 				comm::ITimeSensor* input;
@@ -108,23 +128,22 @@ namespace systemx {
 
 				while (get_loop_data(input, output, strategy)) {
 					value_type data = input->get_value();
-					//strategy
+					data = strategy->calc(data);
 					output->set_value(data);
+					os::this_thread::sleep_for(1s);
 				}
 
 			};
 
 			void startRealTimeLoop(void) {
 				isInRealTimeLoop = true;
-				// Start thread
-				run();
+				real_runner = new RealTimeThread([this]() {this->run(); });
+				real_runner->start();
 			}
 
 			void stopRealTimeLoop(void) {
-				//Lock
 				isInRealTimeLoop = false;
-				//Join
-
+				delete real_runner;
 			}
 
 			os::ostream& logger() {
@@ -220,6 +239,8 @@ namespace systemx {
 			ITimeStrategy* strategy1 = nullptr;
 			ITimeStrategy* strategy2 = nullptr;
 			ITimeStrategy* strategy3 = nullptr;
+
+			RealTimeThread* real_runner;
 
 		};
 

@@ -12,6 +12,7 @@
 #include "systemx/ui/consoledisplay.hpp"
 #include "systemx/ui/display.hpp"
 #include "systemx/os/iostream.hpp"
+#include "systemx/os/chrono.hpp"
 #include "systemx/statemachine/istatemachine.hpp"
 
 
@@ -30,7 +31,8 @@ namespace systemx {
 				strategy(nullptr),
 				strategy1(new TimeStrategy1()),
 				strategy2(new TimeStrategy2()),
-				strategy3(new TimeStrategy3())
+				strategy3(new TimeStrategy3()),
+				real_runner(nullptr)
 				{
 				}
 

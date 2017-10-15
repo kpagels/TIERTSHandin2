@@ -5,6 +5,10 @@
 
 namespace systemx {
     namespace os {
+		namespace this_thread {
+			using namespace std::this_thread;
+		}
+
         class thread{
         public:
             virtual void start(){
@@ -15,6 +19,7 @@ namespace systemx {
                 _thread.join();
             }
         protected:
+
             virtual void run() = 0;
 
             std::thread _thread;
