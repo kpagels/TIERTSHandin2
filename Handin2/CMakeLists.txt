@@ -14,6 +14,7 @@ include/systemx/app/state/realtimeloop.hpp
 include/systemx/app/state/realtimeexecution.hpp
 include/systemx/app/state/suspended.hpp
 include/systemx/app/statemachine.hpp
+include/systemx/app/DiscreteProcessingThread.hpp
 include/systemx/comm/clocktimesensor.hpp
 include/systemx/comm/itimesensor.hpp
 include/systemx/comm/itimewriter.hpp
