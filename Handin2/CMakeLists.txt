@@ -27,6 +27,7 @@ include/systemx/os/istream.hpp
 include/systemx/os/ostream.hpp
 include/systemx/os/thread.hpp
 include/systemx/os/mutex.hpp
+include/systemx/os/scoped_lock.hpp
 include/systemx/statemachine/istatemachine.hpp
 include/systemx/statemachine/statemachine.hpp
 include/systemx/ui/consoledisplay.hpp
