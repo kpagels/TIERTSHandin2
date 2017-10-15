@@ -5,8 +5,6 @@
 #include "systemx/ui/idisplay.hpp"
 #include "systemx/ui/display.hpp"
 #include "systemx/os/iostream.hpp"
-#include "systemx/os/thread.hpp"
-#include "systemx/os/chrono.hpp"
 #include "systemx/app/discrete/istatemachine.hpp"
 #include "systemx/app/discrete/statemachine.hpp"
 #include "systemx/app/discrete/isystem.hpp"
