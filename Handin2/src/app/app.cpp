@@ -30,19 +30,19 @@ namespace systemx {
 				systemSelftest_ = true;
 
 				display.cout << " Event: Restart" << os::endl;
-				statemachine.Restart();
+				Restart();
 
 				display.cout << " Event: Start" << os::endl;
-				statemachine.Start();
+				Start();
 
 				display.cout << " Event: Suspend" << os::endl;
-				statemachine.Suspend();
+				Suspend();
 
 				display.cout << " Event: Stop" << os::endl;
-				statemachine.Stop();
+				Stop();
 
 				display.cout << " Event: Start" << os::endl;
-				statemachine.Start();
+				Start();
 				
 			}
 		
