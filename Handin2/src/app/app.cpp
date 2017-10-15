@@ -13,7 +13,6 @@
 #include "systemx/ui/display.hpp"
 #include "systemx/os/iostream.hpp"
 #include "systemx/os/chrono.hpp"
-#include "systemx/statemachine/istatemachine.hpp"
 
 
 namespace systemx {
@@ -21,18 +20,7 @@ namespace systemx {
 
 			App::App(ui::IDisplay* display) :
 				statemachine(this, state::PowerOnSelfTest::Instance()),
-				display(display),
-				real_input(new comm::ClockTimeSensor<hw::Clock>()),
-				sim_input(new comm::ClockTimeSensor<hw::FakeClock>()),
-				input(nullptr),
-				real_output(new comm::TimeWriter("Real")),
-				sim_output(new comm::TimeWriter("Sim")),
-				output(nullptr),
-				strategy(nullptr),
-				strategy1(new TimeStrategy1()),
-				strategy2(new TimeStrategy2()),
-				strategy3(new TimeStrategy3()),
-				real_runner(nullptr)
+				display(display)
 				{
 				}
 

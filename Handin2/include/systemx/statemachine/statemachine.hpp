@@ -1,90 +1,54 @@
 #ifndef STATEMACHINE_HPP_
 #define STATEMACHINE_HPP_
 
+#include "systemx/statemachine/istate.hpp"
 #include "systemx/statemachine/istatemachine.hpp"
+
 
 namespace systemx {
 	namespace statemachine {
 		
 		class StateMachine : public IStateMachine, public IStateData {
 		public:
-			StateMachine(ISystem* system, IState* state) : system(system), state(state) {
-				EnterState();
-			}
+			StateMachine(ISystem* system, IState* state);
 
-			~StateMachine() {
-				ExitState();
-			}
+			~StateMachine();
 
 			void ChangeState(IState* state);
 
-			void Exit() {
-				state->Exit(system, this);
-			}
+			void Exit();
 
-			void Start() {
-				state->Start(system, this);
-			}
+			void Start();
 
-			void Restart() {
-				state->Restart(system, this);
-			}
+			void Restart();
 
-			void Stop() {
-				state->Stop(system, this);
-			}
+			void Stop();
 
-			void Suspend() {
-				state->Suspend(system, this);
-			}
+			void Suspend();
 
-			void Resume() {
-				state->Resume(system, this);
-			}
+			void Resume();
 
-			void SelfTestFailed() {
-				state->SelfTestFailed(system, this);
-			}
+			void SelfTestFailed();
 
-			void SelftestOk() {
-				state->SelftestOk(system, this);
-			}
+			void SelftestOk();
 
-			void Initalized() {
-				state->Initalized(system, this);
-			}
+			void Initalized();
 
-			void ConfigX() {
-				state->ConfigX(system, this);
-			}
+			void ConfigX();
 
-			void Configure() {
-				state->Configure(system, this);
-			}
+			void Configure();
 
-			void ConfigurationEnded() {
-				state->ConfigurationEnded(system, this);
-			}
+			void ConfigurationEnded();
 
-			void EventX() {
-				state->EventX(system, this);
-			}
+			void EventX();
 
-			void EventY() {
-				state->EventY(system, this);
-			}
+			void EventY();
 
-			void chMode() {
-				state->chMode(system, this);
-			}
+			void chMode();
 
-			void RunRealTime() {
-				state->RunRealTime(system, this);
-			}
+			void RunRealTime();
 
-			void Simulate() {
-				state->Simulate(system, this);
-			}
+			void Simulate();
 
 		private:
 

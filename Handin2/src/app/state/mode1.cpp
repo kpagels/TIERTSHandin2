@@ -12,7 +12,7 @@ namespace systemx {
 
 				void Mode1Base::EnterState(ISystem* system, IStateMachine* statemachine) {
 					system->logger() << "EnterState: Mode1" << os::endl;
-					system->set_mode_1();
+					system->continues.set_mode_1();
 				}
 
 				void Mode1Base::ExitState(ISystem* system, IStateMachine* statemachine) {

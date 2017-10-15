@@ -7,46 +7,15 @@
 #include "systemx/os/iostream.hpp"
 #include "systemx/os/thread.hpp"
 #include "systemx/os/chrono.hpp"
+#include "systemx/statemachine/istatemachine.hpp"
 #include "systemx/statemachine/statemachine.hpp"
+#include "systemx/statemachine/isystem.hpp"
 #include "systemx/comm/itimesensor.hpp"
 #include "systemx/comm/itimewriter.hpp"
+#include "systemx/app/continuoes/continuoes.hpp"
 
 namespace systemx {
 	namespace app {
-
-		class RealTimeThread : public os::thread {
-		public:
-			RealTimeThread(std::function<void()> run) : run_(run) {}
-
-			void run() {
-				run_();
-			}
-
-		private:
-			std::function<void()> run_;
-		};
-
-		class ITimeStrategy {
-		public:
-			using value_type = comm::ITimeSensor::value_type;
-			virtual ~ITimeStrategy() = default;
-			virtual value_type calc(value_type data) {
-				return data;
-			}
-			
-		};
-
-		class TimeStrategy1 : public ITimeStrategy {
-		
-		};
-
-		class TimeStrategy2 : public ITimeStrategy {
-
-		};
-
-		class TimeStrategy3 : public ITimeStrategy {
-
-		};
 		
 		class App : public IApp, public statemachine::ISystem  {
 		public:
@@ -82,68 +51,8 @@ namespace systemx {
 
 			void PerformConfigurationX(void) {}
 
-			void set_mode_real(void) {
-				// Lock
-				input = real_input;
-				output = real_output;
-			}
-
-			void set_mode_sim(void) {
-				// Lock
-				input = sim_input;
-				output = sim_output;
-			}
-
-			void set_mode_1(void) {
-				// Lock
-				strategy = strategy1;
-			}
-
-			void set_mode_2(void) {
-				// Lock
-				strategy = strategy2;
-			}
-
-			void set_mode_3(void) {
-				// Lock
-				strategy = strategy3;
-			}
-
-			bool get_loop_data(comm::ITimeSensor*& input, comm::ITimeWriter*& output, ITimeStrategy*& strategy) {
-				// Lock
-				input = this->input;
-				output = this->output;
-				strategy = this->strategy;
-				return isInRealTimeLoop;
-			}
-
 			void run(void) {
-				using value_type = comm::ITimeSensor::value_type;
-				using namespace std::chrono_literals;
-				display.cout << "Running!" << os::endl;
-
-				comm::ITimeSensor* input;
-				comm::ITimeWriter* output;
-				ITimeStrategy* strategy;
-
-				while (get_loop_data(input, output, strategy)) {
-					value_type data = input->get_value();
-					data = strategy->calc(data);
-					output->set_value(data);
-					os::this_thread::sleep_for(2s);
-				}
-
-			};
-
-			void startRealTimeLoop(void) {
-				isInRealTimeLoop = true;
-				real_runner = new RealTimeThread([this]() {this->run(); });
-				real_runner->start();
-			}
-
-			void stopRealTimeLoop(void) {
-				isInRealTimeLoop = false;
-				delete real_runner;
+				display.cout << "Running system" << os::endl;
 			}
 
 			os::ostream& logger() {
@@ -223,24 +132,7 @@ namespace systemx {
 
 		private:
 			ui::Display display;
-			statemachine::StateMachine statemachine;
-
-			bool isInRealTimeLoop = false;
-
-			comm::ITimeSensor* real_input = nullptr;
-			comm::ITimeSensor* sim_input = nullptr;
-			comm::ITimeSensor* input = nullptr;
-
-			comm::ITimeWriter* real_output = nullptr;
-			comm::ITimeWriter* sim_output = nullptr;
-			comm::ITimeWriter* output = nullptr;
-
-			ITimeStrategy* strategy = nullptr;
-			ITimeStrategy* strategy1 = nullptr;
-			ITimeStrategy* strategy2 = nullptr;
-			ITimeStrategy* strategy3 = nullptr;
-
-			RealTimeThread* real_runner;
+			statemachine::StateMachine statemachine;		
 
 		};
 

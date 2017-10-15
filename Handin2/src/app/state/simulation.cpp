@@ -12,7 +12,7 @@ namespace systemx {
 
 				void SimulationBase::EnterState(ISystem* system, IStateMachine* statemachine) {
 					system->logger() << "EnterState: Simulation" << os::endl;
-					system->set_mode_sim();
+					system->continues.set_mode_sim();
 				}
 
 				void SimulationBase::ExitState(ISystem* system, IStateMachine* statemachine) {

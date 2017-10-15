@@ -4,6 +4,8 @@ project (systemx)
 set(HEADERS 
 include/systemx/app/app.hpp
 include/systemx/app/continuoes/continuoes.hpp
+include/systemx/app/continuoes/itimestrategy.hpp
+include/systemx/app/continuoes/realtimethread.hpp
 include/systemx/app/iapp.hpp
 include/systemx/app/state/failure.hpp
 include/systemx/app/state/initializing.hpp
@@ -32,6 +34,8 @@ include/systemx/os/thread.hpp
 include/systemx/os/mutex.hpp
 include/systemx/os/scoped_lock.hpp
 include/systemx/statemachine/istatemachine.hpp
+include/systemx/statemachine/isystem.hpp
+include/systemx/statemachine/istate.hpp
 include/systemx/statemachine/statemachine.hpp
 include/systemx/ui/consoledisplay.hpp
 include/systemx/ui/display.hpp
@@ -40,6 +44,8 @@ include/systemx/ui/idisplay.hpp
 
 set(SOURCES
 src/app/app.cpp
+src/app/continuoes/continuoes.cpp
+src/app/continuoes/realtimethread.cpp
 src/app/state/failure.cpp
 src/app/state/initializing.cpp
 src/app/state/mode1.cpp

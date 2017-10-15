@@ -20,12 +20,12 @@ namespace systemx {
 						new StateMachine(system, RealTimeExecution::Instance())
 					};
 
-					system->startRealTimeLoop();
+					system->continues.start();
 				}
 
 				void RealTimeLoopBase::ExitState(ISystem* system, IStateMachine* statemachine) {
 
-					system->stopRealTimeLoop();
+					system->continues.stop();
 
 					delete substatemachines(statemachine)->statemachine1;
 					delete substatemachines(statemachine)->statemachine2;
