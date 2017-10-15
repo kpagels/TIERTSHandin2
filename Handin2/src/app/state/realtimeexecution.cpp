@@ -12,12 +12,12 @@ namespace systemx {
 
 				void RealTimeExecutionBase::EnterState(ISystem* system, IStateMachine* statemachine) {
 					system->logger() << "EnterState: RealTimeExecution" << os::endl;
-					// Starting Thread
+					
 				}
 
 				void RealTimeExecutionBase::ExitState(ISystem* system, IStateMachine* statemachine) {
 					system->logger() << "ExitState: RealTimeExecution" << os::endl;
-					// Stopping Thread
+					
 				}
 			}
 		}
