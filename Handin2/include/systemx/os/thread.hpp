@@ -2,7 +2,6 @@
 #define THREAD_HPP_
 
 #include <thread>
-#include <mutex>
 
 namespace systemx {
     namespace os {
@@ -16,8 +15,7 @@ namespace systemx {
             }
         protected:
             virtual void run() = 0;
-            
-            std::mutex _mutex;
+
             std::thread _thread;
             
         };
