@@ -3,13 +3,21 @@
 
 #include "systemx/comm/itimewriter.hpp"
 #include "systemx/os/chrono.hpp"
+#include "systemx/os/iostream.hpp"
 
 namespace systemx {
 namespace comm {
 
 	class TimeWriter : public ITimeWriter {
 	public:		
-		virtual void set_value(value_type) {};
+
+		TimeWriter(std::string name) : name(name) {}
+
+		virtual void set_value(value_type value) {
+			os::cout << name.c_str() << " " << value << std::endl;
+		};
+
+		std::string name;
 	};
 
 }

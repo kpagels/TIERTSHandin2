@@ -8,10 +8,11 @@ namespace systemx {
         class thread{
         public:
             virtual void start(){
-                _thread = std::thread(&thread::run, this)
+				_thread = std::thread(&thread::run, this);
             }
+
             ~thread(){
-                thread_.join();
+                _thread.join();
             }
         protected:
             virtual void run() = 0;

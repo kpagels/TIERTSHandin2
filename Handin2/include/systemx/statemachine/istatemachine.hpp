@@ -19,6 +19,15 @@ namespace systemx {
 				virtual void readConfigurationInfo(void) = 0;
 				virtual void PerformConfigurationX(void) = 0;
 				virtual void run(void) = 0;
+				virtual void set_mode_real(void) = 0;
+				virtual void set_mode_sim(void) = 0;
+				virtual void set_mode_1(void) = 0;
+				virtual void set_mode_2(void) = 0;
+				virtual void set_mode_3(void) = 0;
+
+				virtual void startRealTimeLoop(void) = 0;
+				virtual void stopRealTimeLoop(void) = 0;
+
 			};
 
 			class IStateMachine;

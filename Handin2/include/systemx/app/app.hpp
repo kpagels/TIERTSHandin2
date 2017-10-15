@@ -12,6 +12,23 @@
 namespace systemx {
 	namespace app {
 
+		class ITimeStrategy {
+		public:
+			virtual ~ITimeStrategy() = default;
+		};
+
+		class TimeStrategy1 : public ITimeStrategy {
+		
+		};
+
+		class TimeStrategy2 : public ITimeStrategy {
+
+		};
+
+		class TimeStrategy3 : public ITimeStrategy {
+
+		};
+		
 		class App : public IApp, public statemachine::ISystem  {
 		public:
 			App(ui::IDisplay* display);
@@ -46,10 +63,64 @@ namespace systemx {
 
 			void PerformConfigurationX(void) {}
 
+			void set_mode_real(void) {
+				// Lock
+				input = real_input;
+				output = real_output;
+			}
+
+			void set_mode_sim(void) {
+				// Lock
+				input = sim_input;
+				output = sim_output;
+			}
+
+			void set_mode_1(void) {
+				// Lock
+				strategy = strategy1;
+			}
+
+			void set_mode_2(void) {
+				// Lock
+				strategy = strategy2;
+			}
+
+			void set_mode_3(void) {
+				// Lock
+				strategy = strategy3;
+			}
+
+			bool get_loop_data(comm::ITimeSensor*& input, comm::ITimeWriter*& output, ITimeStrategy*& strategy) {
+				// Lock
+				input = this->input;
+				output = this->output;
+				strategy = this->strategy;
+				return isInRealTimeLoop;
+			}
+
 			void run(void) {
+				using value_type = comm::ITimeSensor::value_type;
 				display.cout << "Running!" << os::endl;
 
+				comm::ITimeSensor* input;
+				comm::ITimeWriter* output;
+				ITimeStrategy* strategy;
+
+				while (get_loop_data(input, output, strategy)) {
+					value_type data = input->get_value();
+					//strategy
+					output->set_value(data);
+				}
+
 			};
+
+			void startRealTimeLoop(void) {
+				run();
+			}
+
+			void stopRealTimeLoop(void) {
+
+			}
 
 			os::ostream& logger() {
 				return display.cout;
@@ -138,9 +209,10 @@ namespace systemx {
 			comm::ITimeWriter* sim_output = nullptr;
 			comm::ITimeWriter* output = nullptr;
 
-			//ITimeStrategy* strategy = nullptr;
-			//ITimeStrategy* strategy = nullptr;
-			//ITimeStrategy* strategy = nullptr;
+			ITimeStrategy* strategy = nullptr;
+			ITimeStrategy* strategy1 = nullptr;
+			ITimeStrategy* strategy2 = nullptr;
+			ITimeStrategy* strategy3 = nullptr;
 
 		};
 

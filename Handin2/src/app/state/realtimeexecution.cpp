@@ -12,7 +12,7 @@ namespace systemx {
 
 				void RealTimeExecutionBase::EnterState(ISystem* system, IStateMachine* statemachine) {
 					system->logger() << "EnterState: RealTimeExecution" << os::endl;
-					
+					system->set_mode_real();
 				}
 
 				void RealTimeExecutionBase::ExitState(ISystem* system, IStateMachine* statemachine) {

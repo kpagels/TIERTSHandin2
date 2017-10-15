@@ -8,6 +8,7 @@
 #include "systemx/hw/fakeclock.hpp"
 #include "systemx/comm/itimesensor.hpp"
 #include "systemx/comm/clocktimesensor.hpp"
+#include "systemx/comm/timewriter.hpp"
 #include "systemx/ui/consoledisplay.hpp"
 #include "systemx/ui/display.hpp"
 #include "systemx/os/iostream.hpp"
@@ -22,9 +23,16 @@ namespace systemx {
 				display(display),
 				real_input(new comm::ClockTimeSensor<hw::Clock>()),
 				sim_input(new comm::ClockTimeSensor<hw::FakeClock>()),
-				input(nullptr)
+				input(nullptr),
+				real_output(new comm::TimeWriter("Real")),
+				sim_output(new comm::TimeWriter("Sim")),
+				output(nullptr),
+				strategy(nullptr),
+				strategy1(new TimeStrategy1()),
+				strategy2(new TimeStrategy2()),
+				strategy3(new TimeStrategy3())
 				{
-			}
+				}
 
 			void App::start(void) {
 				
