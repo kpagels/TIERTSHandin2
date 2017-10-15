@@ -44,17 +44,6 @@ namespace systemx {
 				display.cout << " Event: Start" << os::endl;
 				Start();
 
-
-				using namespace std::chrono_literals;
-
-				os::this_thread::sleep_for(1s);
-				display.cout << " Event: Simulate" << os::endl;
-				Simulate();
-
-				os::this_thread::sleep_for(2s);
-				display.cout << " Event: RunRealTime" << os::endl;
-				RunRealTime();
-
 			}
 		
 

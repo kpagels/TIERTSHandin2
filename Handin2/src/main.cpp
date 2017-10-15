@@ -15,5 +15,15 @@ int main(void) {
 
 	char a;
 	std::cin >> a;
+	while (a != 'q') {
+		if (a == 's')
+			app.Simulate();
+		if (a == 'r')
+			app.RunRealTime();
+		if (a == '1')
+			app.chMode();
+		std::cin >> a;
+	}
+	
    return 0;
 }
